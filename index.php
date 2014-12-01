@@ -6,7 +6,7 @@
     session_start();
 
     // charge le fichier des fonctions PHP
-    require_once 'functions.php';
+    require_once 'model/functions.php';
 
     // Liste blanche, c'est notre routing qui correspont à nos pages
     $routing = [
@@ -49,7 +49,7 @@
         $page = 'home';
     }
 
-    //check pour la sécurité
+    //check pour la sécurité : si la page à la clée 'secure' est true et que $_SESSION['name'] n'est pas définis
     if ($routing[$page]['secure'] === true && !isset($_SESSION['name'])) {
         //Met en session un message informatif
         addMessageFlash('info', 'Veuillez-vous connecter afin d\'accéder à cette page');
@@ -62,21 +62,19 @@
 ?>
 
 <!doctype html>
-<html lang="fr" class="no-js employer childcare parent  home">
+<html lang="fr">
 <head>
 </head>
 <body>
 
 <a href="?page=home" title="home">Home</a>
-<a href="?page=login" title="login">login</a>
 <a href="?page=message" title="message">Message</a>
 <a href="?page=inscription" title="inscription">inscription</a>
 <?php
 if (isset($_SESSION['name'])) {
-    ?>
-	<a href="/?page=logout" title="logout">logout</a>
-<?php
-
+    echo '<a href="?page=logout" title="logout">logout</a>';
+} else {
+    echo '<a href="?page=login" title="login">login</a>';
 }
 
     // Affiche les flashBag : des messages informatif du genre "votre message a bien été envoyé"
