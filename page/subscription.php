@@ -1,1 +1,1 @@
-Ajout de user en base user.json, utiliser writeFile()
+Reprendre le code PHP de votre ajout d'utilisateur et son formulaire HTML, utilisez writeFile()

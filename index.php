@@ -60,22 +60,29 @@
     }
 
 ?>
-
 <!doctype html>
 <html lang="fr">
 <head>
 </head>
 <body>
 
-<a href="?page=home" title="home">Home</a>
-<a href="?page=message" title="message">Message</a>
-<a href="?page=inscription" title="inscription">inscription</a>
+Vous pouvez faire évoluer l'HTML
+
+<ul>
+    <li><a href="?page=home" title="home">Home</a></li>
+    <li><a href="?page=message" title="message">Message</a></li>
+    <li><a href="?page=inscription" title="inscription">inscription</a></li>
+    <?php
+    if (isset($_SESSION['name'])) {
+        echo '<li><a href="?page=logout" title="logout">logout</a></li>';
+    } else {
+        echo '<li><a href="?page=login" title="login">login</a></li>';
+    }
+    ?>
+</ul>
+
 <?php
-if (isset($_SESSION['name'])) {
-    echo '<a href="?page=logout" title="logout">logout</a>';
-} else {
-    echo '<a href="?page=login" title="login">login</a>';
-}
+
 
     // Affiche les flashBag : des messages informatif du genre "votre message a bien été envoyé"
     if (isset($_SESSION['flashBag'])) {

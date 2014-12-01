@@ -1,1 +1,1 @@
-Gerer le logout
+Reprendre le code PHP de votre Logout
